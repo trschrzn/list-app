@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #282c34;
+}
+$shadow: 2px 2px 7px 0px rgb(255,239,214);
+
+
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Sriracha', cursive;
+    button{
+        background: transparent;
+        padding: 3px 27px;
+        color: #282c34;
+        cursor: pointer;
+        margin-top: 20px;
+        -webkit-font-smoothing: inherit;
+        -moz-osx-font-smoothing: inherit;
+        appearance: none;
+        transition: .3s;
+        &:hover{
+            background: lighten($color: #282c34, $amount: 30%);
+            color: #f8b133;
+        }
+        span{
+            text-transform: lowercase;
+        }
+    }
+}
+
+.App-header {
+    h1{
+        font-size: calc(10px + 5vmin);
+        color: 	#f6f7f8;
+        padding: 15px;
+    }
+}
+
+.listApp
+{
+    background: #f8b133;
+    width: 60vw;
+    min-height: 70vh;
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    box-shadow: $shadow;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    font-size: calc(10px + 2vmin);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    input[type="text"]{
+        background: lighten($color: #f8b133, $amount: 20%);
+        border: none;
+        border-radius: 22px;
+        width: 50vw;
+        height: 30px;
+        padding: 10px;
+        &:focus{
+            outline: none;
+        }
+    }
+    button{
+        border: .13rem dotted #282c34;
+        border-radius: 22px;
+        width: 20vw;
+        color: #282c34;
+        font-weight: bold;
+        font-size: 22px;
+        &:hover{
+            border: .13rem solid lighten($color: #282c34, $amount: 30%);
+        }
+    }
+}
+.filters{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    button{
+        border: .1rem solid #282c34;
+        &:hover{
+            border: .1rem solid lighten($color: #282c34, $amount: 30%);
+        }
+        span{
+            text-transform: lowercase;
+        }
+        &[aria-pressed="true"]{
+            border: .1rem solid lighten($color: #282c34, $amount: 30%);
+            background: lighten($color: #282c34, $amount: 30%);
+            color: #f8b133;
+        }
+    }
+}
+
+.allList{
+    margin: 30px auto;
+    ul{
+        list-style: none;
+        li{
+            .check{
+                display: block;
+                position: relative;
+                clear: left;
+                input[type="checkbox"]{
+                    -webkit-font-smoothing: antialiased;
+                    opacity: 0;
+                    z-index: 2;
+                    display: inline-block;
+                    position: absolute;
+                    top: 3px;
+                    left: -33px;
+                    cursor: pointer;
+                    width: 30px;
+                    height: 30px;
+                    &:checked{
+                        + label{
+                            &::after{
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+                label{
+                    padding: 0 10px;
+                    display: inline-block;
+                    cursor: pointer;
+                    touch-action: manipulation;
+                    &::before{
+                        content: "";
+                        position: absolute;
+                        top: 5px;
+                        left: -33px;
+                        width: 20px;
+                        height: 20px;
+                        border: .1rem dotted #282c34;
+                        background: transparent;
+                    }
+                    &::after{
+                        box-sizing: content-box;
+                        content: "";
+                        position: absolute;
+                        top: 5px;
+                        left: -33px;
+                        width: 18px;
+                        height: 7px;
+                        transform: rotate(-45deg);
+                        border: solid;
+                        border-width: 0 0 5px 5px;
+                        border-top-color: transparent;
+                        opacity: 0;
+                        background: transparent;
+                    }
+                }
+            }
+            .groupBtn{
+                display: flex;
+                gap: 3px;
+                justify-content: flex-end;
+                button{
+                    border: .1rem solid #282c34;
+                    border-radius: 1px;
+                    font-size: 14px;
+                    text-transform: lowercase;
+                    &:hover{
+                        border: .1rem solid lighten($color: #282c34, $amount: 30%);
+                    }
+                    + .btn-danger{
+                        &:hover{
+                            background: #ff3452;
+                            border: .1rem solid #ff3452;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.visually-hidden{
+    display: none;
+}
+.editForm{
+    margin: 30px 0;
+    .btn{
+        width: 10vw;
+        + .btn-danger{
+            &:hover{
+                background: #ff3452;
+                border: .1rem solid #ff3452;
+            }
+        }
+    }
+}
